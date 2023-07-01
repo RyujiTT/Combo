@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# <!--ここにアプリ名を入力-->
+Combo
+​
+## サイト概要
+### サイトテーマ
+<!--何を『目的』とし、どのような『分類』なのかを簡潔に書く-->
+​職場環境の不満点を吐き出せる匿名の目安箱サイト
+### テーマを選んだ理由
+<!--なぜこのようなテーマにしたかを説明する-->
+​以前、ホテルの清掃のアルバイトをしていたときバイト側と責任者側の人間関係が悪くなり双方ともに不満点を吐き出せずにバイト側の人たちがその不満を業務態度に出してしまい業務に支障をきたすということがあったので、そのような不満が言いづらい環境でも不満を言いやすくする目安箱のようなサイトを作ろうと考えました。
+### ターゲットユーザ
+<!--誰に使ってもらうかを具体的に記載する-->
+​主に支店などでバイトを雇っている企業に使ってもらい、現場で働くバイトの人の不満点を目安箱で集め現場の環境改善に役立ててもらおうと考えています。
+### 主な利用シーン
+<!--どのような時に使うのかの状況を記載すること-->
+​支店でバイトを雇っている企業様や、個人でバイトを雇っているお店の店長さんなどに導入してもらいアルバイトの人たちの不満点を集めて現場の環境をより良くしていく目的で使用してもらいたいです。
+## 設計書
+<!--テーマを設定・提出する時点では不要です-->
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+折りたたむ
