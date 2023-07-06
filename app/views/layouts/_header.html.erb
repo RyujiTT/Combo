@@ -1,0 +1,63 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background: #FFEBD2;">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if admin_signed_in? %>
+            <li>
+              <%= link_to admin_items_path, class: 'nav-link text-light' do %>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Products</strong><small style= color:#0b0b33;>商品一覧</small></span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_customers_path, class: 'nav-link text-light' do %>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Customers</strong><small style= color:#0b0b33;>会員一覧</small></span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_homes_top_path, class: 'nav-link text-light' do %>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Orders</strong><small style= color:#0b0b33;>注文履歴一覧</small></span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_genres_path, class: 'nav-link text-light' do %>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Genres</strong><small style= color:#0b0b33;>ジャンル一覧</small></span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Log out</strong><small style= color:#0b0b33;>ログアウト</small></span>
+              <% end %>
+            </li>
+          <% elsif user_signed_in? %>
+            <p>ようこそ、意見書投稿フォームから気軽に意見を投稿してください</p>
+            <li>
+               <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+                 <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Log out</strong><small style= color:#0b0b33;>ログアウト</small></span>
+               <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to about_path, class: 'nav-link text-light' do %>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>About</strong><small style= color:#0b0b33;>概要</small></span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Sign in</strong><small style= color:#0b0b33;>新規登録</small></span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Log in</strong><small style= color:#0b0b33;>ログイン</small></span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
