@@ -1,14 +1,15 @@
-<header>
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background: #FFEBD2;">
+<header class="mb-3">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info p-0">
     <div class="container">
+      <a class="navbar-brand" href="/"><span><%= image_tag 'Logo.png', :size => '80x60' %></span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ms-auto">
           <% if admin_signed_in? %>
             <li>
-              <%= link_to admin_items_path, class: 'nav-link text-light' do %>
+              <%= link_to admin_items_path, class: 'nav-link' do %>
                 <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Products</strong><small style= color:#0b0b33;>商品一覧</small></span>
               <% end %>
             </li>
@@ -33,26 +34,26 @@
               <% end %>
             </li>
           <% elsif user_signed_in? %>
-            <p>ようこそ、意見書投稿フォームから気軽に意見を投稿してください</p>
+            <p>ようこそ、投稿フォームから気軽に意見を投稿してください</p>
             <li>
-               <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
-                 <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Log out</strong><small style= color:#0b0b33;>ログアウト</small></span>
+               <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
+                 <span class="btn d-flex flex-column"><strong style= color:white;>Log out</strong><small style= color:white;>ログアウト</small></span>
                <% end %>
             </li>
           <% else %>
             <li>
               <%= link_to about_path, class: 'nav-link text-light' do %>
-                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>About</strong><small style= color:#0b0b33;>概要</small></span>
+                <span class="btn d-flex flex-column"><strong style= color:white;>About</strong><small style= color:white;>概要</small></span>
               <% end %>
             </li>
             <li>
               <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
-                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Sign in</strong><small style= color:#0b0b33;>新規登録</small></span>
+                <span class="btn d-flex flex-column"><strong style= color:white;>Sign in</strong><small style= color:white;>新規登録</small></span>
               <% end %>
             </li>
             <li>
               <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
-                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Log in</strong><small style= color:#0b0b33;>ログイン</small></span>
+                <span class="btn d-flex flex-column"><strong style= color:white;>Log in</strong><small style= color:white;>ログイン</small></span>
               <% end %>
             </li>
           <% end %>
