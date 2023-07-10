@@ -23,7 +23,9 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update]
     resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
       resource :group_users, only: [:show, :create, :destroy]
+      resource :permits, only: [:create, :destroy]
     end
+    get "groups/:id/permits" => "groups#permits", as: :permits
   end
 
   root to: 'public/homes#top'
