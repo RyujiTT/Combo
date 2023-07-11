@@ -1,6 +1,6 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy, :permits]
   def new
     @group = Group.new
   end
@@ -38,16 +38,29 @@ class Public::GroupsController < ApplicationController
     end
   end
 
+  def destroy
+    @group.destroy
+    redirect_to groups_path
+  end
+
+  def permits
+    @group = Group.find(params[:id])
+    @permits = @group.permits.page(params[:page])
+  end
+
+
   private
 
   def group_params
     params.require(:group).permit(:name, :introduction, :group_image)
   end
 
+  # params[:id]を持つ@groupのowner_idカラムのデータと自分のユーザーIDが一緒かどうかを確かめる。
+  # 違う場合はグループ詳細ページを再表示させる。（オーナー以外は編集、削除、加入希望者ページの遷移はできない）before_actionで使用する。
   def ensure_correct_user
     @group = Group.find(params[:id])
-    unless @group.owner_id = current_user.id
-      redirect_to groups_path
+    unless @group.owner_id == current_user.id
+      redirect_to group_path(@group), alert: "グループオーナーのみ編集が可能です"
     end
   end
 

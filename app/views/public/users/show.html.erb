@@ -5,12 +5,12 @@
       <table class="table">
         <tr>
           <th>名前:</th>
-          <th><%= @user.name %></th>
-          <th><%= link_to '編集', edit_user_path(@user), class: 'btn btn-success' %></th>
+          <th><%= @current_user.name %></th>
+          <th><%= link_to '編集', edit_user_path(@current_user), class: 'btn btn-success' %></th>
         </tr>
         <tr>
           <th>Email address:</th>
-          <th><%= @user.email %></th>
+          <th><%= @current_user.email %></th>
         </tr>
       </table>
     </div>

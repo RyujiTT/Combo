@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     resources :users, only: [:show, :edit, :update]
-    resources :groups, only: [:new, :index, :show, :create, :edit, :update] do
+    resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :group_users, only: [:show, :create, :destroy]
       resource :permits, only: [:create, :destroy]
     end
