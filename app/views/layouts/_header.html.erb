@@ -36,6 +36,16 @@
           <% elsif user_signed_in? %>
             <p>ようこそ、投稿フォームから気軽に意見を投稿してください</p>
             <li>
+               <%= link_to user_path(current_user), class: 'nav-link' do %>
+                 <span class="btn d-flex flex-column"><strong style= color:white;>My Page</strong><small style= color:white;>マイページ</small></span>
+               <% end %>
+            </li>
+            <li>
+               <%= link_to groups_path, class: 'nav-link' do %>
+                 <span class="btn d-flex flex-column"><strong style= color:white;>Groups</strong><small style= color:white;>グループ一覧</small></span>
+               <% end %>
+            </li>
+            <li>
                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
                  <span class="btn d-flex flex-column"><strong style= color:white;>Log out</strong><small style= color:white;>ログアウト</small></span>
                <% end %>
