@@ -14,7 +14,6 @@ class Public::GroupsController < ApplicationController
   def show
     @post = Post.new
     @group = Group.find(params[:id])
-    @user = User.find(params[:id])
   end
 
   def create
