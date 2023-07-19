@@ -1,10 +1,10 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
-  
+
   def new
-    @post = Post.new
-  end 
+    @post = Post.new(post_params)
+  end
 
   def show
     @post = Post.find(params[:id])
@@ -17,13 +17,15 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.build(post_params)
+    @group = @post.group
+    @posts = Post.group_posts(@group)
     if @post.save
-      redirect_to post_path(@post)
+      flash[:notice] = "success"
+      redirect_to @group
     else
-      @posts = Post.all
-      render 'index'
+      flash.now[:alert] = "failed"
+      render 'public/groups/show'
     end
   end
 
@@ -32,7 +34,7 @@ class Public::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: "You have updated book successfully."
+      redirect_to post_path(@post), notice: "You have updated post successfully."
     else
       render "edit"
     end
@@ -46,7 +48,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :group_id)
   end
 
   def ensure_correct_user

@@ -57,3 +57,11 @@
     </div>
   </div>
 </div>
+
+<% if current_user.my_groups.include?(@group) %>
+  my_group
+  <%= render 'public/posts/form', group: @group, post: @post %>
+  <%= render 'public/posts/index', posts: @posts %>
+<% else %>
+ not_join
+<% end %>

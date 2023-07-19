@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <%= form_with model:post,local:true do |f| %>
+      <%= form_with model: [group, post], local: true do |f| %>
+        <%= f.hidden_field :group_id, value: group.id %>
         <div class="form-group">
           <%= f.label :title %>
           <%= f.text_field :title, class: 'form-control post_title' %>
@@ -14,8 +15,6 @@
           <%= f.submit class: 'btn btn-success' %>
         </div>
       <% end %>
-      <%= link_to 'Show', @post, class: "book_#{@post.id}" %> |
-  		<%= link_to 'Back', posts_path, class: "back" %>
     </div>
   </div>
 </div>

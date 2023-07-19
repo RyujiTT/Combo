@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   }
 
   scope module: :public do
-    resources :posts, only: [:new, :index, :show, :edit, :create, :destroy, :update] do
+    resources :posts, only: [:index, :show, :edit, :destroy, :update] do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :group_users, only: [:show, :create, :destroy]
       resource :permits, only: [:create, :destroy]
+      resources :posts, only: [:create]
     end
     get "groups/:id/permits" => "groups#permits", as: :permits
   end
