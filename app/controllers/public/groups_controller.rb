@@ -1,7 +1,7 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy, :permits]
-  
+
   def new
     @group = Group.new
   end
@@ -15,8 +15,7 @@ class Public::GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @post = @group.posts.build
-    #@posts = Post.group_posts(@group)
-    @posts = @group.posts
+    @posts = Post.group_posts(@group)
   end
 
   def create
@@ -65,7 +64,7 @@ class Public::GroupsController < ApplicationController
       redirect_to group_path(@group), alert: "グループオーナーのみ編集が可能です"
     end
   end
-  
+
   # def check_group_user
   #   @group = current_user.my_groups.find_by(id: params[:id])
   #   unless @group

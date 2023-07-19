@@ -1,17 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="mx-auto col-md-8">
       <h2>投稿詳細</h2>
       <table class="table">
         <tr>
           <td><%= link_to @post.title, @post %></td>
           <td><%= @post.body %></td>
+          <td class=<%= "favorite-" + @post.id.to_s %> >
+            <%= render "public/favorites/btn", post: @post %>
+          </td>
           <% if @post.user == current_user %>
             <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_book_#{@post.id}" %></td>
             <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@post.id}" %></td>
           <% end %>
+          <td><%= link_to '戻る', group_path(@group) %></td>
         </tr>
       </table>
+      <div class="post-comments-index">
+        <%= render "public/post_comments/index", post: @post %>
+      </div>
+      <%= render "public/post_comments/form", post: @post, post_comment: @post_comment %>
+      </div>
     </div>
   </div>
 </div>

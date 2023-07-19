@@ -8,6 +8,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @group = @post.group.id
     @post_comment = PostComment.new
   end
 
@@ -41,8 +42,9 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
+    @group = @post.group.id
     @post.destroy
-    redirect_to posts_path
+    redirect_to group_path(@group)
   end
 
   private
