@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-md-8">
+      <h2>投稿詳細</h2>
+      <table class="table">
+        <tr>
+          <td><%= @post.title %></td>
+          <td><%= @post.body %></td>
+          <td>
+            <%= @post.favorites.count %>いいね
+          </td>
+          <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@post.id}" %></td>
+        </tr>
+      </table>
+      <div>
+        <%= render "public/post_comments/index", post: @post %>
+      </div>
+    </div>
+  </div>
+</div>

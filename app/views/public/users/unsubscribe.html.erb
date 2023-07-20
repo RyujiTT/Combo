@@ -1,0 +1,13 @@
+<div class="container mt-4">
+  <div class="row flex-column text-center">
+    <h4 class="mt-4"><strong>本当に退会しますか？</strong></h4>
+    <p class="mt-4">
+      退会すると、会員登録情報やこれまでの投稿などが閲覧できなくなります。</br>
+      退会する場合は、「退会する」をクリックしてください。
+    </p>
+    <div class="button-field mt-4 mb-4">
+      <%= link_to "退会しない", current_user, class: 'btn btn-base' %>&emsp;
+      <%= link_to "退会する", users_withdrawal_path, method: :patch, class: 'btn btn-danger' %>
+      </div>
+  </div>
+</div>

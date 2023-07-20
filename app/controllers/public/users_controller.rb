@@ -22,9 +22,21 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def unsubscribe
+  end
+
+  def withdrawal
+     @user = current_user
+     # is_active(会員ステータス)をfalse(退会)に更新する
+     @user.update(is_deleted: true)
+     reset_session
+     flash[:notice] = "退会処理を実行いたしました"
+     redirect_to root_path
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :is_deleted)
   end
 end

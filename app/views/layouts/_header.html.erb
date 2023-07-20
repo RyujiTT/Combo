@@ -9,23 +9,18 @@
         <ul class="navbar-nav ms-auto">
           <% if admin_signed_in? %>
             <li>
-              <%= link_to admin_items_path, class: 'nav-link' do %>
-                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Products</strong><small style= color:#0b0b33;>商品一覧</small></span>
+              <%= link_to admin_groups_path, class: 'nav-link text-light' do %>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Customers</strong><small style= color:#0b0b33;>グループ一覧</small></span>
               <% end %>
             </li>
             <li>
-              <%= link_to admin_customers_path, class: 'nav-link text-light' do %>
+              <%= link_to admin_users_path, class: 'nav-link text-light' do %>
                 <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Customers</strong><small style= color:#0b0b33;>会員一覧</small></span>
               <% end %>
             </li>
             <li>
               <%= link_to admin_homes_top_path, class: 'nav-link text-light' do %>
-                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Orders</strong><small style= color:#0b0b33;>注文履歴一覧</small></span>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to admin_genres_path, class: 'nav-link text-light' do %>
-                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Genres</strong><small style= color:#0b0b33;>ジャンル一覧</small></span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Orders</strong><small style= color:#0b0b33;>管理者トップページ</small></span>
               <% end %>
             </li>
             <li>

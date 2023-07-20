@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h2>Group Detail</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th>グループ名</th>
+            <th>紹介文</th>
+            <th>グループオーナー</th>
+            <th>メンバー</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <% if @group.group_image.attached? %>
+                <%= image_tag @group.group_image, size: "50x50" %>
+              <% else %>
+                <%= image_tag asset_path("no_image.png"), size: "50x50" %>
+              <% end %>
+            </td>
+            <td><%= @group.name %></td>
+            <td><%= @group.introduction %></td>
+            <td><%= @group.owner.name %></td>
+            <td>
+              <% @group.users.each do |user| %>
+                <li style="list-style: none;"><%= user.name %></li>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to 'グループ削除', admin_group_path(@group), method: :delete,  class: "btn btn-sm btn-danger", data: { confirm: "本当に削除しますか？" } %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <table class='table table-hover table-inverse'>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Opinion</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+              <tr>
+                <td><%= link_to post.title, admin_post_path(post.id) %></td>
+                <td><%= post.body %></td>
+                <td>
+                  <%= post.favorites.count %>いいね
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

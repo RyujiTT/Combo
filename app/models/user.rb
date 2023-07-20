@@ -6,6 +6,11 @@ class User < ApplicationRecord
          
   scope :delete_users, -> { where(is_deleted: true) }
   scope :public_users, -> { where.not(is_deleted: true) }
+  
+  # 退会してなければfalseを返す
+  def active_for_authetication?
+    super && (is_deleted == false)
+  end
 
   has_many :groups, class_name: "Group", foreign_key: :owner_id
   has_many :group_users, dependent: :destroy

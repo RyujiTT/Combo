@@ -11,7 +11,7 @@
       <tr>
         <td><%= link_to post.title, post_path(post.id) %></td>
         <td><%= post.body %></td>
-        <td class=<%= "favorite-" + post.id.to_s %> >
+        <td class=<%= "public/favorite-" + post.id.to_s %> >
             <%= render "public/favorites/btn", post: post %>
         </td>
       </tr>
