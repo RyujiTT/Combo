@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :users, only: [:index, :edit, :update, :show, :update]
+    resources :users, only: [:index, :edit, :update, :show]
     resources :groups, only: [:index, :show, :destroy] do
       resource :group_users, only: [:show, :destroy]
     end
@@ -25,9 +25,9 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    get 'users/unsubscribe' => 'users#unsubscribe'
+    get 'users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
     # 退会処理用のルーティング
-    patch 'users/withdrawal' => 'users#withdrawal'
+    patch 'users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
     resources :users, only: [:show, :edit, :update]
     resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resource :group_users, only: [:show, :create, :destroy]

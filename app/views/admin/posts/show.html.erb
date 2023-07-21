@@ -9,7 +9,7 @@
           <td>
             <%= @post.favorites.count %>いいね
           </td>
-          <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@post.id}" %></td>
+          <td><%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
         </tr>
       </table>
       <div>

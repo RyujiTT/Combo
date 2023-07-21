@@ -6,8 +6,8 @@
       退会する場合は、「退会する」をクリックしてください。
     </p>
     <div class="button-field mt-4 mb-4">
-      <%= link_to "退会しない", current_user, class: 'btn btn-base' %>&emsp;
-      <%= link_to "退会する", withdrawal_path, method: :patch, class: 'btn btn-danger' %>
+      <%= link_to "退会させない", admin_users_path, class: 'btn btn-success' %>
+      <%= link_to "退会させる", admin_users_withdrawal_path, method: :patch, class: 'btn btn-danger' %>
       </div>
   </div>
 </div>

@@ -3,14 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   scope :delete_users, -> { where(is_deleted: true) }
-  scope :public_users, -> { where.not(is_deleted: true) }
-  
-  # 退会してなければfalseを返す
-  def active_for_authetication?
-    super && (is_deleted == false)
-  end
+  scope :active_users, -> { where.not(is_deleted: true) }
 
   has_many :groups, class_name: "Group", foreign_key: :owner_id
   has_many :group_users, dependent: :destroy
@@ -21,4 +16,9 @@ class User < ApplicationRecord
   has_many :posts
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+
+  # 退会してなければfalseを返す
+  def active_for_authetication?
+    super && (is_deleted == false)
+  end
 end

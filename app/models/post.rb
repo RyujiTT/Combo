@@ -12,4 +12,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :title, presence: true
+
+  #scope :latest, -> {order(created_at: :desc)}
+  #scope :favorite_count, -> {order(favorite: :desc)}
 end

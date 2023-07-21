@@ -15,6 +15,15 @@ class Public::PostsController < ApplicationController
   def index
     @posts = Post.all
     @post = Post.new
+    
+    #投稿表示順変更機能
+    #if params[:latest]
+      #@posts = Post.latest
+    #elsif params[:favorite_count]
+      #@posts = Post.favorite_count
+    #else
+      #@books = Book.all
+    #end
   end
 
   def create

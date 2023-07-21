@@ -1,0 +1,18 @@
+<%= form_with model: [:admin, user] do |f| %>
+<div class="row mb-4">
+  <label class="col-lg-3">ユーザー状況</label>
+  <div class="col-lg-4">
+    <%= f.radio_button :is_deleted, :false %>
+    <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+    <%= f.radio_button :is_deleted, :true %>
+    <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-lg-3"></div>
+  <div class="col-lg-4">
+    <%= f.submit "変更を保存", class: 'btn btn-base w-75' %>
+  </div>
+</div>
+<% end %>

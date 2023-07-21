@@ -26,8 +26,8 @@ class Public::UsersController < ApplicationController
   end
 
   def withdrawal
-     @user = current_user
-     # is_active(会員ステータス)をfalse(退会)に更新する
+     @user = User.find(params[:id])
+     # is_deleted(会員ステータス)をtrue(退会)に更新する
      @user.update(is_deleted: true)
      reset_session
      flash[:notice] = "退会処理を実行いたしました"
