@@ -15,7 +15,7 @@ class Group < ApplicationRecord
   def includesUser?(user)
     group_users.exists?(user_id: user.id)
   end
-  
+
   after_commit do
     GroupUser.find_or_create_by(user_id: owner_id, group_id: id)
   end

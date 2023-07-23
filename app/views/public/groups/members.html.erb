@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 mx-auto">
+      <h2 class="mb-3"><%= @group.name %>に所属しているメンバー一覧</h2>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>名前</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @group.users.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

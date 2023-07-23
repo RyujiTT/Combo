@@ -6,7 +6,6 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-
   def edit
     @current_user = current_user
     @user = User.find(params[:id])

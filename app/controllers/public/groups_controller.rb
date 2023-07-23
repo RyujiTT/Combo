@@ -16,6 +16,14 @@ class Public::GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @post = @group.posts.build
     @posts = Post.group_posts(@group)
+    #投稿表示順変更機能
+    if params[:latest]
+      @posts = Post.group_posts(@group).latest
+    elsif params[:favorite_count]
+      @posts = Post.group_posts(@group).favorite_count
+    else
+      @posts = Post.group_posts(@group)
+    end
   end
 
   def create
@@ -47,6 +55,10 @@ class Public::GroupsController < ApplicationController
   def permits
     @group = Group.find(params[:id])
     @permits = @group.permits.page(params[:page])
+  end
+
+  def members
+    @group = Group.find(params[:id])
   end
 
 

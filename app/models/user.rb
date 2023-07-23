@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :posts
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  
+  scope :group_users, -> (group){ where(group_id: group.id) }
 
   # 退会してなければfalseを返す
   def active_for_authetication?

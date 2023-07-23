@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 mx-auto">
-      <h2>Group Detail</h2>
+    <div class="col-md-12 mx-auto">
+      <h2>グループ詳細</h2>
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -26,9 +26,7 @@
             <td><%= @group.introduction %></td>
             <td><%= @group.owner.name %></td>
             <td>
-              <% @group.users.each do |user| %>
-                <li style="list-style: none;"><%= user.name %></li>
-              <% end %>
+              <%= link_to '所属メンバー一覧', members_path(@group) %>
             </td>
             <td>
               <% if @group.owner_id != current_user.id %>
@@ -54,14 +52,21 @@
           </tr>
         </tbody>
       </table>
-      <% if current_user.my_groups.include?(@group) %>
-        my_group
-        <%= render 'public/posts/form', group: @group, post: @post %>
-        <%= render 'public/posts/index', posts: @posts %>
-      <% else %>
-       <h2 class="mt-5">あなたはこのグループに所属していません</h2>
-      <% end %>
     </div>
+    <% if current_user.my_groups.include?(@group) %>
+    <div class="col-md-6">
+      <%= render 'public/posts/form', group: @group, post: @post %>
+    </div>
+    <div class="col-md-6">
+      <p>
+        <%= link_to '新しい順', group_path(@group, latest: "true") %> |
+        <%= link_to 'いいねが多い順', group_path(@group, favorite_count: "true") %>
+      </p>
+      <%= render 'public/posts/index', posts: @posts %>
+    </div>
+    <% else %>
+       <h2 class="mt-5">あなたはこのグループに所属していません</h2>
+    <% end %>
   </div>
 </div>
 

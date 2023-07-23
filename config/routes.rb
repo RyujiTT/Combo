@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'searches/search'
+  end
   namespace :admin do
     resources :users, only: [:index, :edit, :update, :show]
     resources :groups, only: [:index, :show, :destroy] do
@@ -34,6 +37,7 @@ Rails.application.routes.draw do
       resource :permits, only: [:create, :destroy]
       resources :posts, only: [:create]
     end
+    get "groups/:id/members" => "groups#members", as: :members
     get "groups/:id/permits" => "groups#permits", as: :permits
   end
 
