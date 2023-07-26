@@ -2,7 +2,7 @@
   <tbody>
       <% post.post_comments.each do |post_comment| %>
       <tr>
-        <td><%= post_comment.comment %></td>
+        <td class="ps-4 pe-2 pb-3"><%= post_comment.comment %></td>
         <td>
           <% if post_comment.user == current_user %>
             <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-sm btn-danger pull-right", remote: true %>
