@@ -14,7 +14,7 @@ class Post < ApplicationRecord
   end
 
   validates :title, presence: true
-  validates :title, presence: true
+  validates :body, presence: true
 
   scope :latest, -> {order(created_at: :desc)}
 

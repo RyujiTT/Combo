@@ -59,6 +59,7 @@
     </div>
     <% if current_user.my_groups.include?(@group) %>
     <div class="col-md-6">
+      <%= render 'layouts/errors', obj: @post %>
       <%= render 'public/posts/form', group: @group, post: @post %>
     </div>
     <div class="col-md-6">
