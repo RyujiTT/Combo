@@ -8,21 +8,21 @@ class Public::GroupsController < ApplicationController
 
   def index
     @post = Post.new
-    @groups = Group.all
+    @groups = Group.all.page(params[:page]).per(6)
     @user = User.find(current_user.id)
   end
 
   def show
     @group = Group.find(params[:id])
     @post = @group.posts.build
-    @posts = Post.group_posts(@group)
+    @posts = Post.group_posts(@group).page(params[:page]).per(8)
     #投稿表示順変更機能
     if params[:latest]
-      @posts = Post.group_posts(@group).latest
-    elsif params[:favorite_count]
-      @posts = Post.group_posts(@group).favorite_count
+      @posts = Post.group_posts(@group).latest.page(params[:page]).per(8)
+    elsif params
+      @posts = Post.group_posts(@group).favorite_count.page(params[:page]).per(8)
     else
-      @posts = Post.group_posts(@group)
+      @posts = Post.group_posts(@group).page(params[:page]).per(8)
     end
   end
 
@@ -59,6 +59,7 @@ class Public::GroupsController < ApplicationController
 
   def members
     @group = Group.find(params[:id])
+    @group_users = @group.users.page(params[:page]).per(12)
   end
 
 

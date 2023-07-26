@@ -1,21 +1,30 @@
 <div class="container">
+  <h2>投稿詳細</h2>
   <div class="row">
     <div class="mx-auto col-md-8">
-      <h2>投稿詳細</h2>
       <table class="table">
         <tr>
-          <td><%= link_to @post.title, @post %></td>
+          <th style="width:80px;">タイトル</th>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <th>本文</th>
           <td><%= @post.body %></td>
-          <td class=<%= "favorite-" + @post.id.to_s %> >
+        </tr>
+        <tr>
+          <th class=<%= "favorite-" + @post.id.to_s %> >
             <%= render "public/favorites/btn", post: @post %>
-          </td>
-          <% if @post.user == current_user %>
-            <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_book_#{@post.id}" %></td>
-            <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@post.id}" %></td>
-          <% end %>
-          <td><%= link_to '戻る', group_path(@group) %></td>
+          </th>
         </tr>
       </table>
+      <div>
+        <% if @post.user == current_user %>
+          <td><%= link_to '編集', edit_post_path(@post), class: "btn btn-sm btn-success" %></td>
+          <td><%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+        <% end %>
+        <td><%= link_to '戻る', group_path(@group), class: 'btn btn-sm btn-primary' %></td>
+      </div>
+      <h5 class="text-center mt-5 mb-2", style="background-color:cyan;">コメントセクション</h5>
       <div class="post-comments-index">
         <%= render "public/post_comments/index", post: @post %>
       </div>

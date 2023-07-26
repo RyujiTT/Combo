@@ -3,14 +3,12 @@ class Admin::UsersController < ApplicationController
 
   # 会員一覧
   def index
-    @users = User.page(params[:page]).per(10)
-
     if params[:delete_users]
-      @users = User.delete_users
+      @users = User.delete_users.page(params[:page]).per(6)
     elsif params[:active_users]
-      @users = User.active_users
+      @users = User.active_users.page(params[:page]).per(6)
     else
-      @users = User.page(params[:page]).per(10)
+      @users = User.page(params[:page]).per(6)
     end
   end
 

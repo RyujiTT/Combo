@@ -1,0 +1,22 @@
+<div class="container">
+  <div>
+    <% if @users == [] %>
+      <h3>ユーザー検索結果: "<%= @word %>"</h3>
+      <h4 class="pb-5">検索結果はありません</h4>
+    <% else %>
+      <h3>ユーザー検索結果: "<%= @word %>"</h3>
+      <%= render 'admin/users/index', users: @users %>
+    <% end %>
+  </div>
+  <div>
+    <% if @groups == [] %>
+      <h3>グループ検索結果: "<%= @word %>"</h3>
+      <h4 class="pb-5">検索結果はありません</h4>
+    <% else %>
+      <h3>グループ検索結果: "<%= @word %>"</h3>
+      <div class="row justify-content-between">
+      </div>
+      <%= render '/admin/groups/index', groups: @groups %>
+    <% end %>
+  </div>
+</div>

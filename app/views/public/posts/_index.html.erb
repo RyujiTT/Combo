@@ -9,7 +9,7 @@
   <tbody>
     <% posts.each do |post| %>
       <tr>
-        <td><%= link_to post.title, post_path(post.id) %></td>
+        <td><%= link_to truncate(post.title, length: 16), post_path(post.id) %></td>
         <td><%= truncate(post.body, length: 10) %></td>
         <td class=<%= "favorite-" + post.id.to_s %> >
             <%= render "public/favorites/btn", post: post %>

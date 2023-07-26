@@ -19,4 +19,8 @@ class Group < ApplicationRecord
   after_commit do
     GroupUser.find_or_create_by(user_id: owner_id, group_id: id)
   end
+
+  def self.looks(search, word)
+    @group = Group.where("name LIKE?", "%#{word}%")
+  end
 end

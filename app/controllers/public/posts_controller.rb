@@ -20,12 +20,12 @@ class Public::PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     @group = @post.group
-    @posts = Post.group_posts(@group)
+    @posts = Post.group_posts(@group).page(params[:page]).per(8)
     if @post.save
-      flash[:notice] = "success"
+      flash[:notice] = "投稿に成功しました。"
       redirect_to @group
     else
-      flash.now[:alert] = "failed"
+      flash.now[:alert] = "投稿に失敗しました。"
       render 'public/groups/show'
     end
   end

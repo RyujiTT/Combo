@@ -8,9 +8,10 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
           <% if admin_signed_in? %>
+          <p class="my-auto" style ="color: white;">管理者としてログインしています。</p>
             <li>
               <%= link_to admin_groups_path, class: 'nav-link text-light' do %>
-                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Customers</strong><small style= color:#0b0b33;>グループ一覧</small></span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Groups</strong><small style= color:#0b0b33;>グループ一覧</small></span>
               <% end %>
             </li>
             <li>
@@ -19,17 +20,12 @@
               <% end %>
             </li>
             <li>
-              <%= link_to admin_homes_top_path, class: 'nav-link text-light' do %>
-                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Orders</strong><small style= color:#0b0b33;>管理者トップページ</small></span>
-              <% end %>
-            </li>
-            <li>
               <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
                 <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Log out</strong><small style= color:#0b0b33;>ログアウト</small></span>
               <% end %>
             </li>
           <% elsif user_signed_in? %>
-            <p>ようこそ、投稿フォームから気軽に意見を投稿してください</p>
+            <p class="my-auto" style ="color: white;">ようこそ<%= current_user.name %>さん、所属グループ内にある投稿フォームから気軽に意見を投稿してください</p>
             <li>
                <%= link_to user_path(current_user), class: 'nav-link' do %>
                  <span class="btn d-flex flex-column"><strong style= color:white;>My Page</strong><small style= color:white;>マイページ</small></span>
@@ -63,6 +59,14 @@
             </li>
           <% end %>
         </ul>
+        <div class="search_form">
+          <% if admin_signed_in? %>
+            <%= form_with url: admin_search_path, locol: true, method: :get do |f| %>
+              <%= f.text_field :word, :placeholder => "グループ&ユーザ検索欄" %>
+              <%= f.submit "検索", class: "btn-sm" %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </nav>

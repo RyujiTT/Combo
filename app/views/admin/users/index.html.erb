@@ -1,36 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 mx-auto">
-      <h2>Groups</h2>
-      <table class="table table-bordered">
-        <p>
-          <%= link_to '退会済みのユーザー', admin_users_path(delete_users: "true") %> |
-          <%= link_to '有効なユーザー', admin_users_path(active_users: "true") %>
-        </p>
-        <thead>
-          <tr>
-            <th>名前</th>
-            <th>email</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @users.each do |user| %>
-            <tr>
-              <td><%= user.name %></td>
-              <td><%= user.email %></td>
-              <td>
-                <%= link_to '詳細', admin_user_path(user), class: 'btn btn-sm btn-success' %>
-                <% if user.is_deleted == false %>
-                  <p class="text-success">有効</p>
-                <% else %>
-                  <p class="">退会済み</p>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <h2>ユーザー一覧</h2>
+　　　<%= render 'index', users: @users %>
+　　　<%= paginate @users, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>

@@ -1,2 +1,10 @@
-<h1>Public::Searches#search</h1>
-<p>Find me in app/views/public/searches/search.html.erb</p>
+<div class="container">
+  <h3 class="my-4 ml-4">投稿検索結果: "<%= @word %>"</h3>
+  <div class="row mb-5">
+    <div class="col-3 mt-4">
+    </div>
+    <div class="col-9">
+      <%= render '/public/posts/index', posts: @posts %>
+    </div>
+  </div>
+</div>

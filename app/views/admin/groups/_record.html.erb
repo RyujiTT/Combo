@@ -1,0 +1,31 @@
+<%# byebug %>
+<div>
+  <canvas id="myLineChart"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  $(document).on('turbolinks:load', function() {
+    var ctx = document.getElementById("myLineChart");
+    var myLineChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['6日前', '5日前', '4日前', '3日前', '2日前', '1日前', '今日'],
+        datasets: [
+          {
+            label: '投稿された意見の数',
+            data: <%= posts.past_week_count %>,
+            borderColor: "rgba(0,0,255,1)",
+            backgroundColor: "rgba(0,0,0,0)"
+          }
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          },
+        },
+      }
+    });
+  });
+</script>

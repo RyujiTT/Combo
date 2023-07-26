@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'searches/search'
-  end
   namespace :admin do
     resources :users, only: [:index, :edit, :update, :show]
     resources :groups, only: [:index, :show, :destroy] do
       resource :group_users, only: [:show, :destroy]
     end
-    get 'homes/top'
     resources :posts, only: [:show, :destroy]
+    get "search" => "searches#search"
+    get "groups/:id/members" => "groups#members", as: :members
   end
   # 顧客用
   # URL /customers/sign_in ...
@@ -37,13 +35,13 @@ Rails.application.routes.draw do
       resource :permits, only: [:create, :destroy]
       resources :posts, only: [:create]
     end
+    get "groups/:id/search" => "searches#search", as: :search
     get "groups/:id/members" => "groups#members", as: :members
     get "groups/:id/permits" => "groups#permits", as: :permits
   end
 
   root to: 'public/homes#top'
   get 'about' => 'public/homes#about', as: 'about'
-  get 'admin' => 'admin/homes#top', as: 'admin'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

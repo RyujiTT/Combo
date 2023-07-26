@@ -6,17 +6,18 @@
         <thead>
           <tr>
             <th>名前</th>
+            <th>email address</th>
           </tr>
         </thead>
         <tbody>
-          <% @group_users.each do |user| %>
+          <% @group.users.each do |user| %>
             <tr>
               <td><%= user.name %></td>
+              <td><%= user.email %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-      <%= paginate @group_users, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>

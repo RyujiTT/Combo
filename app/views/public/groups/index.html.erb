@@ -4,6 +4,7 @@
       <h2 class="mb-3">グループ一覧</h2>
       <%= link_to "グループ作成", new_group_path, class: 'btn btn-success' %>
       <%= render 'index', groups: @groups %>
+      <%= paginate @groups, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>

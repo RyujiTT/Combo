@@ -16,11 +16,16 @@ class User < ApplicationRecord
   has_many :posts
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_posts, through: :favorites, source: :post
   
   scope :group_users, -> (group){ where(group_id: group.id) }
 
   # 退会してなければfalseを返す
   def active_for_authetication?
     super && (is_deleted == false)
+  end
+  
+  def self.looks(search, word)
+    @user = User.where(["name LIKE?", "%#{word}%"])
   end
 end

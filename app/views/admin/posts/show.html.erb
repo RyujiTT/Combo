@@ -1,19 +1,31 @@
 <div class="container">
+  <h2>投稿詳細</h2>
   <div class="row">
     <div class="mx-auto col-md-8">
-      <h2>投稿詳細</h2>
       <table class="table">
         <tr>
+          <th style="width:80px;">タイトル</th>
           <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <th>本文</th>
           <td><%= @post.body %></td>
-          <td>
-            <%= @post.favorites.count %>いいね
-          </td>
-          <td><%= link_to '削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+        </tr>
+        <tr>
+          <th>
+            <i class="far fa-thumbs-up"></i>
+            <%= @post.favorites.count %>
+          </th>
         </tr>
       </table>
       <div>
+        <td><%= link_to '削除', @admin_post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+        <td><%= link_to '戻る', admin_group_path(@group), class: 'btn btn-sm btn-primary' %></td>
+      </div>
+      <h5 class="text-center mt-5 mb-2", style="background-color:cyan;">コメントセクション</h5>
+      <div class="post-comments-index">
         <%= render "public/post_comments/index", post: @post %>
+      </div>
       </div>
     </div>
   </div>
