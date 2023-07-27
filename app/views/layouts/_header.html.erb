@@ -1,11 +1,11 @@
 <header class="mb-3">
   <nav class="navbar navbar-expand-lg navbar-dark bg-info p-0">
-    <div class="container">
+    <div class="container-fluid">
       <a class="navbar-brand" href="/"><span><%= image_tag 'Logo.png', :size => '80x60' %></span></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div id="navbarNavDropdown" class="collapse navbar-collapse">
         <ul class="navbar-nav ms-auto">
           <% if admin_signed_in? %>
           <p class="my-auto" style ="color: white;">管理者としてログインしています。</p>
