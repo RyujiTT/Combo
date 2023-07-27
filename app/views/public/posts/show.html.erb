@@ -1,7 +1,7 @@
 <div class="container">
   <h2>投稿詳細</h2>
   <div class="row">
-    <div class="mx-auto col-md-8">
+    <div class="col-sm-12 col-md-8 px-5 px-sm-0 mx-auto">
       <table class="table">
         <tr>
           <th style="width:80px;">タイトル</th>
@@ -24,7 +24,7 @@
         <% end %>
         <td><%= link_to '戻る', group_path(@group), class: 'btn btn-sm btn-primary' %></td>
       </div>
-      <h5 class="text-center mt-5 mb-2", style="background-color:cyan;">コメントセクション</h5>
+      <h5 class="text-center mt-5 mb-2 rounded", style="background-color:cyan;">コメントセクション</h5>
       <div class="post-comments-index">
         <%= render "public/post_comments/index", post: @post %>
       </div>

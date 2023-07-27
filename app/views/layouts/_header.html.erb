@@ -9,50 +9,50 @@
         <ul class="navbar-nav ms-auto">
           <% if admin_signed_in? %>
           <p class="my-auto" style ="color: white;">管理者としてログインしています。</p>
-            <li>
+            <li class="nav-item">
               <%= link_to admin_groups_path, class: 'nav-link text-light' do %>
                 <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Groups</strong><small style= color:#0b0b33;>グループ一覧</small></span>
               <% end %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to admin_users_path, class: 'nav-link text-light' do %>
-                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Customers</strong><small style= color:#0b0b33;>会員一覧</small></span>
+                <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Users</strong><small style= color:#0b0b33;>会員一覧</small></span>
               <% end %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
                 <span class="btn d-flex flex-column"><strong style= color:#0b0b33;>Log out</strong><small style= color:#0b0b33;>ログアウト</small></span>
               <% end %>
             </li>
           <% elsif user_signed_in? %>
             <p class="my-auto" style ="color: white;">ようこそ<%= current_user.name %>さん、所属グループ内にある投稿フォームから気軽に意見を投稿してください</p>
-            <li>
+            <li class="nav-item">
                <%= link_to user_path(current_user), class: 'nav-link' do %>
                  <span class="btn d-flex flex-column"><strong style= color:white;>My Page</strong><small style= color:white;>マイページ</small></span>
                <% end %>
             </li>
-            <li>
+            <li class="nav-item">
                <%= link_to groups_path, class: 'nav-link' do %>
                  <span class="btn d-flex flex-column"><strong style= color:white;>Groups</strong><small style= color:white;>グループ一覧</small></span>
                <% end %>
             </li>
-            <li>
+            <li class="nav-item">
                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link' do %>
                  <span class="btn d-flex flex-column"><strong style= color:white;>Log out</strong><small style= color:white;>ログアウト</small></span>
                <% end %>
             </li>
           <% else %>
-            <li>
+            <li class="nav-item">
               <%= link_to about_path, class: 'nav-link text-light' do %>
                 <span class="btn d-flex flex-column"><strong style= color:white;>About</strong><small style= color:white;>概要</small></span>
               <% end %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
                 <span class="btn d-flex flex-column"><strong style= color:white;>Sign in</strong><small style= color:white;>新規登録</small></span>
               <% end %>
             </li>
-            <li>
+            <li class="nav-item">
               <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
                 <span class="btn d-flex flex-column"><strong style= color:white;>Log in</strong><small style= color:white;>ログイン</small></span>
               <% end %>
