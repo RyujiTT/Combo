@@ -14,7 +14,6 @@ class Admin::GroupsController < ApplicationController
     else
       @posts = Post.group_posts(@group).page(params[:page]).per(8)
     end
-    @posts_count = Post.group_by_day(:created_at).count
   end
 
   def destroy
