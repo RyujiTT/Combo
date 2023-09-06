@@ -28,7 +28,7 @@ Combo
 https://docs.google.com/spreadsheets/d/1j5tMIeQMFdNBBho5MGinEJDF_WMLKuJt8Fx3QTYZbK4/edit?usp=sharing
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：macOS Ventura
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
